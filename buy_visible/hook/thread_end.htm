@@ -1,0 +1,42 @@
+<script>
+    window.onload = function () {
+        $(".J_post_buy").click(function () {
+            var price = parseInt($(this).attr("data-price"));
+            var myGolds = parseInt($(this).attr("data-credit"));
+            var tid = $(this).attr("data-tid");
+            var name = $(this).attr("data-util");
+
+            if (myGolds >= price) {
+                if (
+                    confirm(
+                        "你的" +
+                            name +
+                            "余额为：" +
+                            myGolds +
+                            "，你确认使用 " +
+                            price +
+                            " 个" +
+                            name +
+                            "购买吗？"
+                    )
+                ) {
+                    // 用户点击确定时的操作
+                    alert("购买逻辑");
+                    $.xpost(
+                        '<?php echo url("post-buy-$tid"); ?>',
+                        {},
+                        function (code, message) {
+                            if (code == 0) {
+                            } else if (code < 0) {
+                                $.alert(message);
+                            } else {
+                            }
+                        }
+                    );
+                }
+            } else {
+                alert("你的" + name + "余额为：" + myGolds + "，不够支付！");
+            }
+        });
+    };
+</script>

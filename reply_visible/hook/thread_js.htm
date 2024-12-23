@@ -1,0 +1,11 @@
+<script>
+    // 回复后刷新页面
+    var containerBox = $(".posts")[0];
+    var boxObserver = new MutationObserver(function () {
+        window.location.reload();
+    });
+    boxObserver.observe(containerBox, {
+        childList: true,
+        subtree: true,
+    });
+</script>

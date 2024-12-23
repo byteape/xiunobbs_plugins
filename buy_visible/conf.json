@@ -1,0 +1,10 @@
+{
+    "name": "购买可见",
+    "brief": "内容标签[buy price=xxx][/buy]",
+    "version": "1.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "dependencies": []
+}

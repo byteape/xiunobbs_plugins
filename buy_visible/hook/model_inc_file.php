@@ -1,0 +1,1 @@
+APP_PATH.'model/mygoldsrecord.func.php',

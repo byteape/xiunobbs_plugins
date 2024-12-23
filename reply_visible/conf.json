@@ -1,0 +1,10 @@
+{
+    "name": "回复可见",
+    "brief": "内容标签[reply][/reply]",
+    "version": "1.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "dependencies": []
+}

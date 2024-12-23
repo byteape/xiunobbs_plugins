@@ -1,0 +1,44 @@
+<template include="./view/htm/my.common.template.htm">
+	<slot name="my_nav">
+		<ul class="nav nav-tabs card-header-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo url("my-goldsrecord");?>" data-active="my-goldsrecord">金币记录</a>
+			</li>
+		</ul>
+	</slot>
+	
+	<slot name="my_body">
+	    <div class="row line-height-4">
+	    <span class="text-muted" style="margin-left: 20px;">余额：<?php echo $user['golds']; ?></span>
+	    </div>
+	    <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">类型</th>
+              <th scope="col">变更</th>
+              <th scope="col">时间</th>
+              <th scope="col" width="60%">内容</th>
+            </tr>
+          </thead>
+          <tbody>
+              	<?php if($goldsRecordlist) { foreach($goldsRecordlist as $_record) { ?>
+            <tr>
+              <td><?php echo get_type_title($_record['type']); ?></td>
+              <td><?php echo ($_record['direction']>0?'+':'-').$_record['number']; ?></td>
+              <td><?php echo date('Y-m-d H:i',$_record['create_time']); ?></td>
+              <td><?php if(isset($_record['thread']['tid'])){ echo '<a target="_blank" style="color: var(--red);" href="'.url("thread-".$_record['thread']['tid']).'">'.$_record['thread']['subject'].'</a>';}?></td>
+            </tr>
+            <?php } } ?>
+            
+          </tbody>
+        </table>
+		
+		<?php if($pagination) { ?>
+		<nav><ul class="pagination justify-content-center flex-wrap"><?php echo $pagination; ?></ul></nav>
+		<?php } ?>
+	</slot>
+</template>
+
+<script>
+$('a[data-active="menu-my-goldsrecord"]').addClass('active');
+</script>
